@@ -7,17 +7,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BallGenerator {
-    public static final String INVALID_INPUT_LENGTH = "숫자는 3자리만 입력가능합니다.";
-
-    public List<Integer> makeRandomNumbers(){
+    public List<Integer> computerBall() {
         List<Integer> numberList = new ArrayList<>();
-        while(numberList.size() < 3){
+        while (numberList.size() < 3) {
             int number = Randoms.pickNumberInRange(1, 9);
-            if(numberList.contains(number)){
+            if (numberList.contains(number)) {
                 continue;
             }
             numberList.add(number);
         }
         return numberList;
+    }
+    public List<Integer> userBall(String input){
+        ValidationUtils.validationInputData(input);
+        List<Integer> userBall = new ArrayList<>();
+        for(String each : input.split("")){
+                userBall.add(Integer.valueOf(each));
+        }
+        return userBall;
     }
 }
