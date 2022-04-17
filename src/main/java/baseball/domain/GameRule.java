@@ -1,8 +1,5 @@
 package baseball.domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class GameRule {
@@ -22,7 +19,7 @@ public class GameRule {
     public static int countOfIncluding(List<Integer> computerBall, List<Integer> userBall){
         int result = 0;
         for(int i : computerBall){
-            if(computerBall.contains(i)) {
+            if(userBall.contains(i)) {
                 result++;
             }
         }
