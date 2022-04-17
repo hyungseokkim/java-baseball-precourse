@@ -14,14 +14,14 @@ public class ValidTest {
     BallGenerator ballGenerator = new BallGenerator();
     @Test
     void 숫자검증_1_9() {
-        assertThat(ValidationUtils.validNo(ballGenerator.makeRandomNumbers().get(0))).isTrue();
-        assertThat(ValidationUtils.validNo(ballGenerator.makeRandomNumbers().get(1))).isTrue();
-        assertThat(ValidationUtils.validNo(ballGenerator.makeRandomNumbers().get(2))).isTrue();
-        assertThat(ValidationUtils.validNo(10)).isFalse();
+        assertThat(ValidationUtils.validNoRange(ballGenerator.computerBall().get(0))).isTrue();
+        assertThat(ValidationUtils.validNoRange(ballGenerator.computerBall().get(1))).isTrue();
+        assertThat(ValidationUtils.validNoRange(ballGenerator.computerBall().get(2))).isTrue();
+        assertThat(ValidationUtils.validNoRange(10)).isFalse();
     }
     @Test
     void 숫자검증_3자리() {
-        assertThat(ValidationUtils.validListSize(new ArrayList<>(ballGenerator.makeRandomNumbers()))).isTrue();
+        assertThat(ValidationUtils.validListSize(new ArrayList<>(ballGenerator.computerBall()))).isTrue();
         assertThat(ValidationUtils.validListSize(new ArrayList<>(Arrays.asList(1, 2, 3, 4)))).isFalse();
         assertThat(ValidationUtils.validListSize(new ArrayList<>(Arrays.asList(1, 2)))).isFalse();
     }
@@ -29,5 +29,9 @@ public class ValidTest {
     void logicOfRule(){
         assertThat(GameRule.logicOfRule(new ArrayList<>(Arrays.asList(1, 2, 3)),
                 new ArrayList<>(Arrays.asList(1, 2, 3)))).isEqualTo("3스트라이크");
+    }
+    @Test
+    void userBallTest(){
+        assertThat(ballGenerator.userBall("234")).isEqualTo(new ArrayList<>(Arrays.asList(2, 3, 4)));
     }
 }
