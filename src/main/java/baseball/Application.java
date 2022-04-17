@@ -1,8 +1,10 @@
 package baseball;
 
+import baseball.domain.Starter;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
-
+        Starter starter = new Starter();
+        starter.run();
     }
 }
